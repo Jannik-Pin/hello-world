@@ -1,10 +1,33 @@
 // Select color input
 // Select size input
+let color = document.getElementById("colorPicker");
+let table = document.getElementById("pixelCanvas");
+let sizePicker = document.getElementById("sizePicker");
+let height = document.getElementById("inputHeight").value;
+let width = document.getElementById("inputWeight").value;
+makeGrid(height, width);
 
-// When size is submitted by the user, call makeGrid()
+sizePicker.addEventListener("click", (e) => {
+
+  e.preventDefault();
+
+  let height = document.getElementById("inputHeight").value;
+  let width = document.getElementById("inputWeight").value;
+  table.firstElementChild.remove();
+
+  makeGrid(height, width);
+
+});
 
 function makeGrid() {
 
-// Your code goes here!
-
+for (let r = 0; r < height; r++) {
+    let row = table.insertRow(r);
+    for (let c = 0; c < width; c++) {
+      let cell = row.insertCell(c);
+      cell.addEventListener("click", (e) => {
+        cell.style.backgroundColor = color.value;
+      })
+    }
+  }
 }
